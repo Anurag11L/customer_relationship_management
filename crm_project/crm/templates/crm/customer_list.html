@@ -14,10 +14,15 @@
           <h1 class="display-4">Customer List</h1>
           <p class="lead">This is a Anurag's customer relationship model.</p>
         </div>
-      </div>
+    </div>
 
-    <!-- <h1></h1> -->
-    <table border="2"  class="table">
+    <div class="container-fluid" style="display: flex; margin-bottom: 0.9rem;">
+        <button style="flex-direction: row-reverse;" class="btn btn-secondary ml-auto" onclick="location.href='{% url 'crm:create_customer' %}'">
+            Add Customer
+        </button>
+    </div>
+
+    <table class="table">
         <thead class="thead-dark">
             <tr>
                 <th>Name</th>
@@ -38,17 +43,15 @@
                 <td>{{ customer.created_at }}</td>
                 
                 <td>
-                    <button onclick="location.href='{% url 'crm:edit_customer' customer.id %}'">Edit</button>
-                    <button onclick="deleteCustomer({{ customer.id }})">Delete</button>
+                    <button class="btn btn-secondary" onclick="location.href='{% url 'crm:edit_customer' customer.id %}'">Edit</button>
+                    <button class="btn btn-secondary" onclick="deleteCustomer({{ customer.id }})">Delete</button>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 
-    <button onclick="location.href='{% url 'crm:create_customer' %}'">
-        Add Customer
-    </button>
+    
 
     <script>
         function deleteCustomer(customerId) {

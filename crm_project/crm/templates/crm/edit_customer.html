@@ -15,6 +15,12 @@
             <p class="lead">You can edit the customer's details here.</p>
         </div>
     </div>
+
+    <div class="container-fluid" style="display: flex; margin-bottom: 0.9rem;">
+        <button style="flex-direction: row-reverse;" onclick="location.href='{% url 'crm:customer_list' %}'" class="btn btn-secondary ml-auto">
+            Back to Customer List
+        </button>
+    </div>
     
     <div class="container">
         <form method="post" action="" class="mx-auto">
@@ -56,9 +62,7 @@
         </form>
     </div>
 
-    <button onclick="location.href='{% url 'crm:customer_list' %}'" class="btn btn-secondary">
-        Back to Customer List
-    </button>
+    
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
