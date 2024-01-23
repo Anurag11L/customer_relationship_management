@@ -1,0 +1,16 @@
+<!-- crm/templates/crm/edit_customer.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Customer</title>
+    {% csrf_token %}
+</head>
+<body>
+    <h1>Edit Customer</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save Changes">
+    </form>
+</body>
+</html>

@@ -24,9 +24,21 @@ def create_customer(request):
     # If the request method is not POST, render the form
     return render(request, 'crm/create_customer.html')
 
+
+from .forms import CustomerForm
+
 def edit_customer(request, customer_id):
-    # ... (define the logic for editing a customer)
-    return HttpResponse(f"Editing customer with ID: {customer_id}")
+    customer = get_object_or_404(Customer, id=customer_id)
+
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+            return redirect('crm:customer_list')
+    else:
+        form = CustomerForm(instance=customer)
+
+    return render(request, 'crm/edit_customer.html', {'form': form, 'customer': customer})
 
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse

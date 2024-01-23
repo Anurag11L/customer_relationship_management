@@ -12,3 +12,4 @@ urlpatterns = [
     path('delete-customer/<int:customer_id>/', delete_customer, name='delete_customer'),
     # ... (other URL patterns)
 ]
+
