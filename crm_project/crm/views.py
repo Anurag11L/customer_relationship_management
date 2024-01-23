@@ -27,3 +27,11 @@ def create_customer(request):
 def edit_customer(request, customer_id):
     # ... (define the logic for editing a customer)
     return HttpResponse(f"Editing customer with ID: {customer_id}")
+
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+
+def delete_customer(request, customer_id):
+    customer = get_object_or_404(Customer, id=customer_id)
+    customer.delete()
+    return JsonResponse({'message': 'Customer deleted successfully'})
