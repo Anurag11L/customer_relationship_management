@@ -1,0 +1,54 @@
+<!-- crm/templates/crm/customer_list.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Customer List</title>
+  </head>
+  <body>
+    <h1>Customer List</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Created At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer in customers %}
+        <tr>
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.phone }}</td>
+          <td>{{ customer.address }}</td>
+          <td>{{ customer.created_at }}</td>
+          <td>
+            <button onclick="location.href='{% url 'crm:edit_customer' customer.id %}'">Edit</button>
+
+              Edit
+            </button>
+            <button onclick="deleteCustomer({{ customer.id }})">Delete</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <button onclick="location.href='{% url 'crm:create_customer' %}'">
+      Add Customer
+    </button>
+
+    <script>
+      function deleteCustomer(customerId) {
+        if (confirm("Are you sure you want to delete this customer?")) {
+          // Implement the logic to delete the customer, e.g., send a DELETE request to a Django view
+          // You may use JavaScript fetch or Ajax for this purpose
+          alert("Customer deleted!");
+        }
+      }
+    </script>
+  </body>
+</html>
